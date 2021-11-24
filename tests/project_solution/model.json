@@ -1,0 +1,162 @@
+{
+    "products": [
+        "P1",
+        "P2"
+    ],
+    "factories": {
+        "W1": {
+            "productOutputs": {
+                "P1": 52,
+                "P2": 53
+            }
+        },
+        "W2": {
+            "productOutputs": {
+                "P1": 67,
+                "P2": 70
+            }
+        }
+    },
+    "warehouses": {
+        "M1": {
+            "tiers": [
+                {
+                    "capacity": 0,
+                    "cost": 232
+                },
+                {
+                    "capacity": 58,
+                    "cost": 232
+                },
+                {
+                    "capacity": 58,
+                    "cost": 692
+                },
+                {
+                    "capacity": 153,
+                    "cost": 692
+                }
+            ]
+        },
+        "M2": {
+            "tiers": [
+                {
+                    "capacity": 0,
+                    "cost": 0
+                },
+                {
+                    "capacity": 0,
+                    "cost": 440
+                },
+                {
+                    "capacity": 97,
+                    "cost": 440
+                },
+                {
+                    "capacity": 97,
+                    "cost": 624
+                },
+                {
+                    "capacity": 156,
+                    "cost": 624
+                }
+            ]
+        }
+    },
+    "stores": {
+        "S1": {
+            "productInputs": {
+                "P1": 34,
+                "P2": 33
+            }
+        },
+        "S2": {
+            "productInputs": {
+                "P1": 31,
+                "P2": 36
+            }
+        },
+        "S3": {
+            "productInputs": {
+                "P1": 22,
+                "P2": 39
+            }
+        }
+    },
+    "trucks": {
+        "T1": {
+            "capacity": 22,
+            "dayCost": 3000,
+            "possibleRoutes": [
+                "R1",
+                "R2",
+                "R3",
+                "R4"
+            ]
+        },
+        "T2": {
+            "capacity": 10,
+            "dayCost": 900,
+            "possibleRoutes": [
+                "R5",
+                "R6",
+                "R7",
+                "R8",
+                "R9",
+                "R10"
+            ]
+        }
+    },
+    "routes": {
+        "R1": {
+            "start": "W1",
+            "end": "M1",
+            "costPerUnit": 3
+        },
+        "R2": {
+            "start": "W1",
+            "end": "M2",
+            "costPerUnit": 4
+        },
+        "R3": {
+            "start": "W2",
+            "end": "M1",
+            "costPerUnit": 4
+        },
+        "R4": {
+            "start": "W2",
+            "end": "M2",
+            "costPerUnit": 8
+        },
+        "R5": {
+            "start": "M1",
+            "end": "S1",
+            "costPerUnit": 12
+        },
+        "R6": {
+            "start": "M1",
+            "end": "S2",
+            "costPerUnit": 20
+        },
+        "R7": {
+            "start": "M1",
+            "end": "S3",
+            "costPerUnit": 20
+        },
+        "R8": {
+            "start": "M2",
+            "end": "S1",
+            "costPerUnit": 8
+        },
+        "R9": {
+            "start": "M2",
+            "end": "S2",
+            "costPerUnit": 19
+        },
+        "R10": {
+            "start": "M2",
+            "end": "S3",
+            "costPerUnit": 15
+        }
+    }
+}

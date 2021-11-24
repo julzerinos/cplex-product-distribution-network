@@ -1,0 +1,92 @@
+{
+    "CPLEXSolution": {
+        "version": "1.0",
+        "header": {
+            "problemName": "model_distribution",
+            "objectiveValue": "15908.0",
+            "solved_by": "cplex_local"
+        },
+        "variables": [
+            {
+                "index": "0",
+                "name": "dvar_products_per_route_P1R1",
+                "value": "58.0"
+            },
+            {
+                "index": "4",
+                "name": "dvar_products_per_route_P2RR9",
+                "value": "58.0"
+            },
+            {
+                "index": "6",
+                "name": "dvar_trucks_per_route_T1R1",
+                "value": "3.0"
+            },
+            {
+                "index": "7",
+                "name": "dvar_trucks_per_route_T2RR9",
+                "value": "6.0"
+            }
+        ],
+        "linearConstraints": [
+            {
+                "name": null,
+                "index": 0
+            },
+            {
+                "name": null,
+                "index": 1
+            },
+            {
+                "name": "ct_factories_max_P1",
+                "index": 2,
+                "slack": 142.0
+            },
+            {
+                "name": "ct_factories_max_P2",
+                "index": 3,
+                "slack": 200.0
+            },
+            {
+                "name": "ct_stores_min_S1",
+                "index": 4
+            },
+            {
+                "name": "ct_stores_min_S1",
+                "index": 5
+            },
+            {
+                "name": "ct_truck_capacity_at_least_R1",
+                "index": 6,
+                "slack": -8.0
+            },
+            {
+                "name": "ct_truck_capacity_at_least_RR9",
+                "index": 7,
+                "slack": -2.0
+            },
+            {
+                "name": "ct_truck_capacity_at_least_RR8",
+                "index": 8
+            },
+            {
+                "name": "ct_warehouse_equilibrium_M1",
+                "index": 9
+            },
+            {
+                "name": "ct_warehouse_equilibrium_M2",
+                "index": 10
+            },
+            {
+                "name": "ct_warehouse_max_capacity_M1",
+                "index": 11,
+                "slack": 95.0
+            },
+            {
+                "name": "ct_warehouse_max_capacity_M2",
+                "index": 12,
+                "slack": 97.0
+            }
+        ]
+    }
+}

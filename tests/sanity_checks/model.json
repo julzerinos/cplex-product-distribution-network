@@ -1,0 +1,108 @@
+{
+    "products": [
+        "P1",
+        "P2"
+    ],
+    "factories": {
+        "W1": {
+            "productOutputs": {
+                "P1": 200,
+                "P2": 200
+            }
+        }
+    },
+    "warehouses": {
+        "M1": {
+            "includeZero": false,
+            "tiers": [
+                {
+                    "capacity": 0,
+                    "cost": 232
+                },
+                {
+                    "capacity": 58,
+                    "cost": 232
+                },
+                {
+                    "capacity": 58,
+                    "cost": 692
+                },
+                {
+                    "capacity": 153,
+                    "cost": 692
+                }
+            ]
+        },
+        "M2": {
+            "includeZero": true,
+            "tiers": [
+                {
+                    "capacity": 0,
+                    "cost": 0
+                },
+                {
+                    "capacity": 0,
+                    "cost": 99999999
+                },
+                {
+                    "capacity": 100,
+                    "cost": 99999999
+                }
+            ]
+        }
+    },
+    "stores": {
+        "S1": {
+            "productInputs": {
+                "P1": 150,
+                "P2": 0
+            }
+        }
+    },
+    "trucks": {
+        "T1": {
+            "capacity": 22,
+            "dayCost": 3000,
+            "possibleRoutes": [
+                "R1",
+                "R2",
+                "R3",
+                "R4"
+            ]
+        },
+        "T2": {
+            "capacity": 10,
+            "dayCost": 900,
+            "possibleRoutes": [
+                "R5",
+                "R6",
+                "R7",
+                "RR8",
+                "RR9",
+                "R10"
+            ]
+        }
+    },
+    "routes": {
+        "R1": {
+            "start": "W1",
+            "end": "M1",
+            "costPerUnit": 3
+        },
+        "R2": {
+            "start": "W1",
+            "end": "M2",
+            "costPerUnit": 4
+        },
+        "RR9": {
+            "start": "M1",
+            "end": "S1",
+            "costPerUnit": 19
+        },
+        "RR8": {
+            "start": "M2",
+            "end": "S1",
+            "costPerUnit": 15
+        }
+    }
+}
