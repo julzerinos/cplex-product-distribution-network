@@ -16,36 +16,37 @@
             "includeZero": false,
             "tiers": [
                 {
-                    "capacity": 0,
+                    "startCapacity": 0,
+                    "endCapacity": 0,
+                    "cost": 0
+                },
+                {
+                    "startCapacity": 0,
+                    "endCapacity": 53,
                     "cost": 232
                 },
                 {
-                    "capacity": 58,
-                    "cost": 232
+                    "startCapacity": 53,
+                    "endCapacity": 153,
+                    "cost": 690
                 },
                 {
-                    "capacity": 58,
-                    "cost": 692
-                },
-                {
-                    "capacity": 153,
-                    "cost": 692
+                    "startCapacity": 153,
+                    "endCapacity": 200,
+                    "cost": 700
                 }
             ]
         },
         "M2": {
-            "includeZero": true,
             "tiers": [
                 {
-                    "capacity": 0,
+                    "startCapacity": 0,
+                    "endCapacity": 0,
                     "cost": 0
                 },
                 {
-                    "capacity": 0,
-                    "cost": 99999999
-                },
-                {
-                    "capacity": 100,
+                    "startCapacity": 0,
+                    "endCapacity": 100,
                     "cost": 99999999
                 }
             ]
@@ -54,7 +55,7 @@
     "stores": {
         "S1": {
             "productInputs": {
-                "P1": 150,
+                "P1": 153.1,
                 "P2": 0
             }
         }
@@ -64,42 +65,36 @@
             "capacity": 22,
             "dayCost": 3000,
             "possibleRoutes": [
-                "R1",
-                "R2",
-                "R3",
-                "R4"
+                "RM1",
+                "RM2"
             ]
         },
         "T2": {
             "capacity": 10,
             "dayCost": 900,
             "possibleRoutes": [
-                "R5",
-                "R6",
-                "R7",
-                "RR8",
-                "RR9",
-                "R10"
+                "RS1",
+                "RS2"
             ]
         }
     },
     "routes": {
-        "R1": {
+        "RM1": {
             "start": "W1",
             "end": "M1",
             "costPerUnit": 3
         },
-        "R2": {
+        "RM2": {
             "start": "W1",
             "end": "M2",
             "costPerUnit": 4
         },
-        "RR9": {
+        "RS1": {
             "start": "M1",
             "end": "S1",
             "costPerUnit": 19
         },
-        "RR8": {
+        "RS2": {
             "start": "M2",
             "end": "S1",
             "costPerUnit": 15

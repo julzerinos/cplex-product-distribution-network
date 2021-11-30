@@ -8,6 +8,7 @@ from re import M
 from docplex.mp.model import Model
 from docplex.mp.solution import SolveSolution
 from docplex.mp.linear import LinearExpr
+from numpy import log, zeros
 
 
 # Step 0 - Prepare the environment
@@ -59,10 +60,6 @@ def prepare_data(model: Model, objects_path='.') -> LinearExpr:
         p + r: {'route': r, 'product': p} for p in products for r in routes
     }
 
-    warehouse_tier_combinations = {
-        w + i: 0 for i, w in enumerate(warehouses)
-    }
-
     # Decision variables ##
 
     product_quantities = model.continuous_var_dict(
@@ -73,9 +70,11 @@ def prepare_data(model: Model, objects_path='.') -> LinearExpr:
         truck_route_combinations, name="dvar_trucks_per_route"
     )
 
-    warehouse_upgrade = model.binary_var_list(
-        warehouse_tier_combinations
-    )
+    warehouse_upgrade_decisions = {
+        wname: model.binary_var_list(
+            [t['endCapacity'] for t in w['tiers']], name="dvar_warehouse_upgrades_" + wname
+        ) for wname, w in warehouses.items()
+    }
 
     # Expressions ##
 
@@ -91,31 +90,20 @@ def prepare_data(model: Model, objects_path='.') -> LinearExpr:
         for pr, amount in product_quantities.items()
     )
 
-    warehouse_usage_cost_functions = {
-        wname: model.piecewise(
-            -1,
-            [
-                (tier['capacity'], tier['cost']) for tier in warehouse['tiers']
-            ],
-            0
-        )
-        for wname, warehouse in warehouses.items()
-    }
-
-    for _, f in warehouse_usage_cost_functions.items():
-        f.plot()
-
-    # Cost of warehouse usage
+    # Cost of warehouse tier decision
     warehouse_usage_cost = model.sum(
-        warehouse_usage_cost_functions[w](
-            model.sum(
-                product_quantities[prname] for prname, pr in product_route_combinations.items()
-                if pr['route'] in point_edge_lookup[w]['in']
-            )
-        ) for w in warehouses
+        decision * tier['cost']
+        for wuname, w in warehouses.items() for decision, tier in zip(warehouse_upgrade_decisions[wuname], w['tiers'])
     )
 
     # Constraints ##
+
+    # Constraint on warehouse tier upgrade decisions (one decision must be made)
+    for wuname in warehouses:
+        model.add_constraint(
+            model.sum(warehouse_upgrade_decisions[wuname]) == 1,
+            ctname="ct_warehouse_single_decision_" + wuname
+        )
 
     # Routes from factories can have at most the output of the factory
     #   for each product
@@ -176,21 +164,26 @@ def prepare_data(model: Model, objects_path='.') -> LinearExpr:
                 ctname='ct_warehouse_equilibrium_' + w + p
             )
 
-    # For warehouse points, incoming products can be at most equal to max capacity and at least 0
-
-    for wname, warehouse in warehouses.items():
+    # For warehouse points, incoming products can be at most equal to current tier max capacity and greater than current tier min capacity
+    for wname, w in warehouses.items():
         model.add_constraint(
             model.sum(
                 product_quantities[prname] for prname, pr in product_route_combinations.items()
                 if pr['route'] in point_edge_lookup[wname]['in']
             )
-            <= warehouse['tiers'][-1]['capacity'],
+            <=
+            model.sum(
+                decision * tier['endCapacity']
+                for decision, tier in zip(warehouse_upgrade_decisions[wname], w['tiers'])
+            ),
             ctname='ct_warehouse_max_capacity_' + wname
         )
-
-    for wname, warehouse in warehouses.items():
         model.add_constraint(
-            0 <=
+            model.sum(
+                decision * tier['startCapacity']
+                for decision, tier in zip(warehouse_upgrade_decisions[wname], w['tiers'])
+            )
+            <=
             model.sum(
                 product_quantities[prname] for prname, pr in product_route_combinations.items()
                 if pr['route'] in point_edge_lookup[wname]['in']
@@ -224,4 +217,4 @@ def print_solution(model: Model):
 
 def save_solution(solution: SolveSolution, test_path='.'):
     with open(test_path + "/solution.json", 'w') as f:
-        f.write(solution.export_as_json_string())
+        f.write(solution.export_as_json_string(print_zeros=True))
