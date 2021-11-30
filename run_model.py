@@ -4,7 +4,7 @@ from distribution import \
 
 
 def main():
-    model_objects_path = 'tests/sanity_checks'
+    model_objects_path = 'tests/project2'
 
     model = create_model()
 

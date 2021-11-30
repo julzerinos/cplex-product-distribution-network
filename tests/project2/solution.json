@@ -1,0 +1,265 @@
+{
+    "CPLEXSolution": {
+        "version": "1.0",
+        "header": {
+            "problemName": "model_distribution",
+            "objectiveValue": "50569.0",
+            "solved_by": "cplex_local"
+        },
+        "variables": [
+            {
+                "index": "1",
+                "name": "dvar_products_per_route_P1RW2",
+                "value": "35.0"
+            },
+            {
+                "index": "2",
+                "name": "dvar_products_per_route_P1RW3",
+                "value": "4.0"
+            },
+            {
+                "index": "3",
+                "name": "dvar_products_per_route_P1RW4",
+                "value": "48.0"
+            },
+            {
+                "index": "5",
+                "name": "dvar_products_per_route_P1RM6",
+                "value": "4.0"
+            },
+            {
+                "index": "7",
+                "name": "dvar_products_per_route_P1RM8",
+                "value": "34.0"
+            },
+            {
+                "index": "8",
+                "name": "dvar_products_per_route_P1RM9",
+                "value": "27.0"
+            },
+            {
+                "index": "9",
+                "name": "dvar_products_per_route_P1RM10",
+                "value": "22.0"
+            },
+            {
+                "index": "11",
+                "name": "dvar_products_per_route_P2RW2",
+                "value": "53.0"
+            },
+            {
+                "index": "12",
+                "name": "dvar_products_per_route_P2RW3",
+                "value": "37.0"
+            },
+            {
+                "index": "13",
+                "name": "dvar_products_per_route_P2RW4",
+                "value": "18.0"
+            },
+            {
+                "index": "15",
+                "name": "dvar_products_per_route_P2RM6",
+                "value": "36.0"
+            },
+            {
+                "index": "16",
+                "name": "dvar_products_per_route_P2RM7",
+                "value": "1.0"
+            },
+            {
+                "index": "17",
+                "name": "dvar_products_per_route_P2RM8",
+                "value": "33.0"
+            },
+            {
+                "index": "19",
+                "name": "dvar_products_per_route_P2RM10",
+                "value": "38.0"
+            },
+            {
+                "index": "21",
+                "name": "dvar_trucks_per_route_T1RW2",
+                "value": "4.0"
+            },
+            {
+                "index": "22",
+                "name": "dvar_trucks_per_route_T1RW3",
+                "value": "2.0"
+            },
+            {
+                "index": "23",
+                "name": "dvar_trucks_per_route_T1RW4",
+                "value": "3.0"
+            },
+            {
+                "index": "25",
+                "name": "dvar_trucks_per_route_T2RM6",
+                "value": "4.0"
+            },
+            {
+                "index": "26",
+                "name": "dvar_trucks_per_route_T2RM7",
+                "value": "1.0"
+            },
+            {
+                "index": "27",
+                "name": "dvar_trucks_per_route_T2RM8",
+                "value": "7.0"
+            },
+            {
+                "index": "28",
+                "name": "dvar_trucks_per_route_T2RM9",
+                "value": "3.0"
+            },
+            {
+                "index": "29",
+                "name": "dvar_trucks_per_route_T2RM10",
+                "value": "6.0"
+            },
+            {
+                "index": "30",
+                "name": "dvar_warehouse_upgrades_M1_58",
+                "value": "1.0"
+            },
+            {
+                "index": "34",
+                "name": "dvar_warehouse_upgrades_M2_156",
+                "value": "1.0"
+            }
+        ],
+        "linearConstraints": [
+            {
+                "name": "ct_warehouse_single_decision_M1",
+                "index": 0
+            },
+            {
+                "name": "ct_warehouse_single_decision_M2",
+                "index": 1
+            },
+            {
+                "name": "ct_factories_max_P1",
+                "index": 2,
+                "slack": 17.0
+            },
+            {
+                "name": "ct_factories_max_P2",
+                "index": 3
+            },
+            {
+                "name": "ct_factories_max_P1",
+                "index": 4,
+                "slack": 15.0
+            },
+            {
+                "name": "ct_factories_max_P2",
+                "index": 5,
+                "slack": 15.0
+            },
+            {
+                "name": "ct_stores_min_S1P1",
+                "index": 6
+            },
+            {
+                "name": "ct_stores_min_S1P2",
+                "index": 7
+            },
+            {
+                "name": "ct_stores_min_S2P1",
+                "index": 8
+            },
+            {
+                "name": "ct_stores_min_S2P2",
+                "index": 9
+            },
+            {
+                "name": "ct_stores_min_S3P1",
+                "index": 10
+            },
+            {
+                "name": "ct_stores_min_S3P2",
+                "index": 11
+            },
+            {
+                "name": "ct_truck_capacity_at_least_RW1",
+                "index": 12
+            },
+            {
+                "name": "ct_truck_capacity_at_least_RW2",
+                "index": 13
+            },
+            {
+                "name": "ct_truck_capacity_at_least_RW3",
+                "index": 14,
+                "slack": -3.0
+            },
+            {
+                "name": "ct_truck_capacity_at_least_RW4",
+                "index": 15
+            },
+            {
+                "name": "ct_truck_capacity_at_least_RM5",
+                "index": 16
+            },
+            {
+                "name": "ct_truck_capacity_at_least_RM6",
+                "index": 17
+            },
+            {
+                "name": "ct_truck_capacity_at_least_RM7",
+                "index": 18,
+                "slack": -9.0
+            },
+            {
+                "name": "ct_truck_capacity_at_least_RM8",
+                "index": 19,
+                "slack": -3.0
+            },
+            {
+                "name": "ct_truck_capacity_at_least_RM9",
+                "index": 20,
+                "slack": -3.0
+            },
+            {
+                "name": "ct_truck_capacity_at_least_RM10",
+                "index": 21
+            },
+            {
+                "name": "ct_warehouse_equilibrium_M1P1",
+                "index": 22
+            },
+            {
+                "name": "ct_warehouse_equilibrium_M2P1",
+                "index": 23
+            },
+            {
+                "name": "ct_warehouse_equilibrium_M1P2",
+                "index": 24
+            },
+            {
+                "name": "ct_warehouse_equilibrium_M2P2",
+                "index": 25
+            },
+            {
+                "name": "ct_warehouse_max_capacity_M1",
+                "index": 26,
+                "slack": 17.0
+            },
+            {
+                "name": "ct_warehouse_min_capacity_M1",
+                "index": 27,
+                "slack": 41.0
+            },
+            {
+                "name": "ct_warehouse_max_capacity_M2",
+                "index": 28,
+                "slack": 2.0
+            },
+            {
+                "name": "ct_warehouse_min_capacity_M2",
+                "index": 29,
+                "slack": 57.0
+            }
+        ]
+    }
+}

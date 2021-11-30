@@ -217,4 +217,4 @@ def print_solution(model: Model):
 
 def save_solution(solution: SolveSolution, test_path='.'):
     with open(test_path + "/solution.json", 'w') as f:
-        f.write(solution.export_as_json_string(print_zeros=True))
+        f.write(solution.export_as_json_string())
